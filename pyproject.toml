@@ -1,0 +1,23 @@
+[tool.black]
+line-length = 88
+target-version = ['py38']
+exclude = '''
+/(
+    \.git
+  | \.venv
+  | \.vscode
+  | build
+  | dist
+  | migrations
+  | .*\.pyc
+  | __pycache__
+)/
+'''
+
+[tool.isort]
+profile = "black"
+line_length = 88
+skip = ["venv", ".vscode", ".git", "build", "dist", "migrations", "__pycache__"]
+
+[tool.ruff]
+select = ["TCH"]

@@ -1,0 +1,43 @@
+.venv
+.vscode
+scratch
+old_testbed.py
+out.txt_20240608062723.txt
+test.py
+
+__pycache__/
+meta_models/
+*.egg-info/
+
+*.pkl
+
+*.so
+# Ignore object files
+*.o
+
+# Ignore module object files
+*.mod.o
+*.mod.c
+
+# Ignore module files
+*.mod
+
+# Ignore compiled module kernel object files
+*.ko
+
+# Ignore intermediate files generated during the build
+*.cmd
+
+# Ignore modules.order and Module.symvers generated during build
+modules.order
+Module.symvers
+
+build/
+dist/
+results/
+
+artifacts/
+latest_code*.txt
+out*.txt
+
+.idea/

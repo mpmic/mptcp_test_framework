@@ -1,0 +1,91 @@
+---
+name: Symmetric Paths
+network_env: mininet
+topology:
+  mininet:
+    links:
+       - name: 5g
+         client_ip: 10.0.1.1/24
+         server_ip: 10.0.1.2/24
+         bw: 1000
+         delay: 27.4ms
+         loss: 0.1
+       - name: 4g
+         client_ip: 10.0.2.1/24
+         server_ip: 10.0.2.2/24
+         bw: 140
+         delay: 29.2ms
+         loss: 0.1
+       - name: wlan
+         client_ip: 10.0.3.1/24
+         server_ip: 10.0.3.2/24
+         bw: 30
+         delay: 20ms
+         loss: 0.7
+
+
+  physical:
+    client:
+      hostname: client.example.com
+      username: client_user
+      password: client_password
+      # ssh_key: /home/.ssh/
+      store_location: /home
+
+    server:
+      hostname: server.example.com
+      username: server_user
+      password: server_password
+      store_location: /home
+
+schedulers:
+
+  - name: MinRTTScheduler
+
+  - name: RoundRobinScheduler
+
+  - name: ECFScheduler
+
+  - name: BLESTScheduler
+
+  - name: RedundantScheduler
+
+  - name: LATEScheduler
+
+  - name: FALCONScheduler
+
+  - name: RELESScheduler
+    # params:
+      # server_debug: true
+      # continue_train: true
+
+  # - name: FALCONExtScheduler
+
+  # - name: RELESExtScheduler
+
+congestion_controls:
+  - olia
+  # - bbr
+  - wvegas
+  - cubic
+test:
+  checkpoint: true
+  num_iterations: 30
+  server_port: 8080
+  file_size:
+    - 64K
+    - 2M
+    - 32M
+  # server_debug: true
+results:
+  dir: results/
+  plot:
+    figsize:
+      - 10
+      - 6
+    title: Throughput Distribution by Scheduler
+    xlabel: Scheduler
+    ylabel: Throughput (Mbps)
+logging:
+  file_level: DEBUG
+  stdout_level: INFO
